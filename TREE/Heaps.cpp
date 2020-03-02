@@ -17,6 +17,28 @@ void upheapify(vector<int>&heap,int idx){
         return;
     }
 }
+void downhepify(vector<int>&heap,int idx){
+    int leftidx=2*idx+1;
+    int rightidx=2*idx+2;
+    if(leftidx>=heap.size() and rightidx>=heap.size()){
+        return;
+    }
+    int largestidx=idx;
+    if(leftidx<heap.size() and heap[leftidx]>=heap[largestidx]){
+        largestidx=leftidx;
+    }
+    if(rightidx<heap.size() and heap[rightidx]> heap[largestidx]){
+        largestidx=rightidx;
+    }
+    if(largestidx==idx) return ;
+    swap(heap[idx],heap[largestidx]);
+    downhepify(heap,largestidx);
+}
+void deletepeek(vector<int>&heap){
+    swap(heap[0],heap[heap.size()-1]);
+    heap.pop_back();
+    downhepify(heap,0);
+}
 void insert(vector<int>&heap,int key){
     heap.push_back(key);
     upheapify(heap,heap.size()-1);
@@ -36,6 +58,8 @@ int main(){
         cin>>x;
         insert(heap,x);
     }
+    display(heap);
+    deletepeek(heap);
     display(heap);
     return 0;
 }

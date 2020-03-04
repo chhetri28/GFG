@@ -1,37 +1,53 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<stack>
+#include<algorithm>
 using namespace std;
-class tree{
+class node{
     public:
     int data;
-    tree*left;
-    tree*right;
-    tree(int d){
+    node*left;
+    node*right;
+    node(int d){
         data=d;
         left=NULL;
         right=NULL;
     }
 };
-tree*build(){
-    int data;
-    cin>>data;
-    if(data==-1){
+node* buildTree(){
+    int d;
+    cin>>d;
+    if(d==-1){
         return NULL;
     }
-    tree*root=new tree(data);
-    root->left=build();
-    root->right=build();
+    node*root=new node(d);
+    root->left=buildTree();
+    root->right=buildTree();
     return root;
 }
-void print(tree *root){
+void printprerec(node*root){
     if(root==NULL){
         return;
     }
     cout<<root->data<<" ";
-    print(root->left);
-    print(root->right);
+    printprerec(root->left);
+    printprerec(root->right);
+}
+void preorder(node*root){
+    stack<node*>s;
+    s.push(root);
+    while (!s.empty())
+    {
+        auto curr=s.top();
+        s.pop();
+        if(curr){
+            cout<<curr->data<<" ";
+            s.push(curr->left);
+            s.push(curr->right);
+        }
+    }
 }
 int main(){
-    tree*root=build();
-    print(root);
-    return;
+    node* root=buildTree();
+    //printprerec(root);
+    preorder(root);
 }

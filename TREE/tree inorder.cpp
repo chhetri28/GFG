@@ -1,37 +1,37 @@
 #include<bits/stdc++.h>
 using namespace std;
-class tree{
+class node{
     public:
     int data;
-    tree*left;
-    tree*right;
-    tree(int d){
+    node*left;
+    node*right;
+    node(int d){
         data=d;
         left=NULL;
         right=NULL;
     }
 };
-tree*build(){
-    int data;
-    cin>>data;
-    if(data==-1){
+node* buildTree(){
+    int d;
+    cin>>d;
+    if(d==-1){
         return NULL;
     }
-    tree*root=new tree(data);
-    root->left=build();
-    root->right=build();
+    node*root=new node(d);
+    root->left=buildTree();
+    root->right=buildTree();
     return root;
 }
-void printpre(tree *root){
+
+void printinrec(node*root){
     if(root==NULL){
         return;
     }
-    print(root->left);
+    printinrec(root->left);
     cout<<root->data<<" ";
-    print(root->right);
+    printinrec(root->right);
 }
 int main(){
-    tree*root=build();
-    print(root);
-    return;
+    node*root=buildTree();
+    printinrec(root);
 }

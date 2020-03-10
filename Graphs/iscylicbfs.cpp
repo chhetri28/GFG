@@ -42,7 +42,7 @@ int main(){
     g.addedge(1,2);
     g.addedge(1,4);
     g.addedge(4,3);
-    //g.addedge(2,3);
+    g.addedge(2,3);
     if(g.iscyclicbfs(1)){
         cout<<"Cyclic";
     }

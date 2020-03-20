@@ -18,18 +18,18 @@ node* build(){
     root->right=build();
     return root;
 }
-void helper(node*root,int level,int max_level){
+void helper(node*root,int level,int *max_level){
     if(!root)return;
-    if(level>max_level){
+    if(level>*max_level){
         cout<<root->data<<" ";
-        max_level=level;
+        *max_level=level;
     }
     helper(root->right,level+1,max_level);
     helper(root->left,level+1,max_level);
 }
 void rightside(node*root){
     int max_level=0;
-    helper(root,1,max_level);
+    helper(root,1,&max_level);
 }
 int main(){
     node*root=build();

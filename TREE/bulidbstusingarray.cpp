@@ -1,7 +1,6 @@
 #include <iostream>
 #include<queue>
 using namespace std;
-
 class node{
     public:
         int data;
@@ -41,14 +40,34 @@ node* buildTreeFromArray(int *a,int s,int e){
     return root;
 }
 
-void printpre(node*root){
-    if(root==NULL){
-        return;
+void bfs(node* root){
+    queue<node*>q;
+    q.push(root);
+    q.push(NULL);
+    while (!q.empty())
+    {
+        node* f=q.front();
+        if(f==NULL){
+            cout<<endl;
+            q.pop();
+            if(!q.empty()){
+                q.push(NULL);
+            }
+        }
+        else{
+            cout<<f->data<<" ";
+            q.pop();
+            if(f->left){
+                q.push(f->left);
+            }
+            if(f->right){
+                q.push(f->right);
+            }
+        }
     }
-    cout<<root->data<<" ";
-    printpre(root->left);
-    printpre(root->right);
+    return;
 }
+
 
 int main(){ 
     int t;
@@ -61,7 +80,7 @@ int main(){
             cin>>a[i];
         }
         node*root = buildTreeFromArray(a,0,n-1);
-        printpre(root);
+        bfs(root);
     }
 
 return 0;

@@ -25,24 +25,6 @@ node* buildTree(){
     root->right=buildTree();
     return root;
 }
-node* create(int *in,int *pre,int s,int e){
-    static int i=0;
-    if(s>e){
-        return NULL;
-    }
-    node* root=new node(pre[i]);
-    int index=-1;
-    for(int j=s;j<=e;j++){
-        if(in[j]==pre[i]){
-            index=j;
-            break;
-        }
-    }
-    i++;
-    root->left=create(in,pre,s,index-1);
-    root->right=create(in,pre,index+1,e);
-    return root;
-}
 void bfs(node* root){
     queue<node*>q;
     q.push(root);
@@ -69,6 +51,24 @@ void bfs(node* root){
         }
     }
     return;
+}
+node* create(int *in,int *pre,int s,int e){
+    static int i=0;
+    if(s>e){
+        return NULL;
+    }
+    node* root=new node(pre[i]);
+    int index=-1;
+    for(int j=s;j<=e;j++){
+        if(in[j]==pre[i]){
+            index=j;
+            break;
+        }
+    }
+    i++;
+    root->left=create(in,pre,s,index-1);
+    root->right=create(in,pre,index+1,e);
+    return root;
 }
 int main(){
     //node*root=buildTree();

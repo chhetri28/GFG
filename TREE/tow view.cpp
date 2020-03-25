@@ -63,11 +63,8 @@ void top(node* root)
      map<int,int> m;  
      int hd=0; 
      root->hd=hd; 
-       
-     // push node and horizontal distance to queue 
-    q.push(root); 
-      
-      
+    // push node and horizontal distance to queue 
+    q.push(root);  
     while(q.size()) 
     { 
         hd=root->hd; 
@@ -91,10 +88,7 @@ void top(node* root)
         root=q.front(); 
         
     } 
-      
-      
-      
-     for(auto i=m.begin();i!=m.end();i++) 
+    for(auto i=m.begin();i!=m.end();i++) 
     { 
         cout<<i->second<<" "; 
     } 

@@ -50,6 +50,7 @@ node* buildTree(){
 //     }
 //     return;
 // }
+
 void bfs2(node* root){
     if(root==NULL) return;
     else{

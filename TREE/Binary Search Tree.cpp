@@ -44,6 +44,46 @@ node* build(){
     }
     return root;
 }
+node* pop(node* root,int data){
+    if(root==NULL){
+        return NULL;
+    }
+    else if(data<root->data){
+        root->left=pop(root->left,data);
+        return root;
+    }
+    else if(data>root->data){
+        root->right=pop(root->right,data);
+        return root;
+    }
+    else{
+        // node with 0  children-Leaf node
+        if(root->left==NULL and root->right==NULL){
+            delete root;
+            return NULL;
+        }
+        // node with 1 children
+        if(root->left!=NULL and root->right==NULL){
+            node* temp=root->left;
+            delete root;
+            return temp;
+        }
+        if(root->right!=NULL and root->left==NULL){
+            node* temp=root->right;
+            delete root;
+            return temp;
+        }
+        //node with 2 children
+        node* replace=root->right;
+        // find the inorder successor from right subtree
+        while(replace->left!=NULL){
+            replace=replace->left;
+        }
+        root->data=replace->data;
+        root->right=pop(root->right,replace->data);
+        return root;
+    }
+}
 void inorder(node*root){
     if(root==NULL){
         return;
@@ -82,11 +122,11 @@ void bfs(node* root){
 int main(){
     node*root=build();
     bfs(root);
-    if(search(root,5)){
-        cout<<"Present";
-    }
-    else{
-        cout<<"NO";
-    }
+    cout<<endl; 
+    root=pop(root,5);
+   // bfs(root);
+    root=pop(root,1);
+    bfs(root);
+
 }
 //5 3 7 1 6 8 -1

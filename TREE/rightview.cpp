@@ -47,7 +47,34 @@ void rightside(node*root){
     int max_level=0;
     helper(root,1,&max_level);
 }
+
+void right(node* root){
+    if(root==NULL) return;
+    else{
+        queue<node*>q;
+        q.push(root);
+        while(q.size()>0){
+            int cnt=q.size();
+            while(cnt>0){
+                node* f=q.front();
+                q.pop();
+				if(cnt==1){
+                cout<<f->data<<" ";
+				}
+                if(root->left!=NULL){
+                    q.push(f->left);
+                }
+                if(root->right!=NULL){
+                    q.push(f->right);
+                }
+                cnt--;
+            }
+            cout<<endl;
+        }
+    }
+}
+
 int main(){
-    node*root=build();
-    rightside(root);
+    node*root=buildTreeLevelWise();
+    right(root);
 }

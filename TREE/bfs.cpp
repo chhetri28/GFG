@@ -11,6 +11,7 @@ class node{
         right=NULL;
     }
 };
+
 node* buildTree(){
     int d;
     cin>>d;

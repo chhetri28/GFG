@@ -1,11 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
+template<typename T>
 class Stack{
     private:
-    vector<int> v;
-    vector<int>min;
+    vector<T> v;
+    vector<T>min;
     public:
-    void push(int data){
+    void push(T data){
         v.push_back(data);
         if(min.empty()||min.back()>=data){
             min.push_back(data);
@@ -20,10 +21,10 @@ class Stack{
         }
         v.pop_back();
     }
-    int top(){
+    T top(){
         return v[v.size()-1];
     }
-    int mini(){
+    T mini(){
         if(!min.empty()){
             return min.back();
         }
@@ -31,7 +32,7 @@ class Stack{
     }
 };
 int main(){
-    Stack s;
+    Stack<int> s;
     for(int i=1;i<=5;i++){
         s.push(i);
     }

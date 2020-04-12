@@ -11,28 +11,6 @@ class node{
         right=NULL;
     }
 };
-/*node* buildTreeLevelWise(){
-    int d;
-    cin>>d;
-    node* root=new node(d);
-    queue<node*>q;
-    q.push(root);
-    while(!q.empty()){
-        int c1,c2;
-        cin>>c1>>c2;
-        node* f=q.front();
-        q.pop();
-        if(c1!=-1){
-            f->left=new node(c1);
-            q.push(f->left);
-        }
-        if(c2!=-1){
-            f->right=new node(c2);
-            q.push(f->right);
-        }
-    }
-    return root;
-}*/
 node* buildtree(){
     int d;
     cin>>d;

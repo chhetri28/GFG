@@ -37,5 +37,9 @@ int main(){
         s.push(i);
     }
     cout<<s.top();
+    // while(!s.empty()){
+    //     cout<<s.top()<<" ";
+    //     s.pop();
+    // }
     return 0;   
 }

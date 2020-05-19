@@ -13,6 +13,23 @@ void print(vector<int>adj[],int V){
         cout<<endl;
     }
 }
+void bfs(vector<int>adj[],int src){
+    map<int,int>visited;
+    queue<int> q;
+    q.push(src);
+    visited[src]=true;
+    while(!q.empty()){
+        int node=q.front();
+        cout<<node<<" ";
+        q.pop();
+        for(int nbr:adj[node]){
+            if(!visited[nbr]){
+                q.push(nbr);
+                visited[nbr]=true;
+            }
+        }
+    }
+}
 int main(){
     int V;
     cin>>V;
@@ -25,4 +42,5 @@ int main(){
     addEdge(adj,2,3);
     addEdge(adj,3,4);
     print(adj,V);
+    bfs(adj,0);
 }

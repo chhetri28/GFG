@@ -6,6 +6,7 @@ using namespace std;
 template<typename T>
 class graph{
     map<T,list<T> >adjlist;
+    
     public:
     graph(){
 

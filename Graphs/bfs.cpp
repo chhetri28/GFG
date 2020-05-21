@@ -34,6 +34,7 @@ class graph{
         }
     }
 };
+
 int main(){
    graph<int>g;
    g.addedge(0,1);

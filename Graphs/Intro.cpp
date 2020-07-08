@@ -2,7 +2,7 @@
 using namespace std;
 class graph{
      int V;//numbers of vertices
-     list<int>*l;
+     list<int>*l;//l is the pointer to the array of list
      public:
         graph(int v){
             V=v;

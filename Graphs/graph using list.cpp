@@ -18,6 +18,10 @@ int main(){
     int Ver;
     cin>>Ver;
     list<int>l[Ver];
-    addedge(l,0,1);
+    for(int i=0;i<Ver;i++){
+    int x,y;
+    cin>>x>>y;
+    addedge(l,x,y);
+    }
     print(l,Ver);
 }

@@ -64,17 +64,7 @@ void insertinmiddle(Node*&head,int data,int p){
     }
     return;
 }
-void printll(Node* head){
-    Node*temp=head;
-    while(temp!=NULL){
-        cout<<temp->data<<" ";
-        temp=temp->next;
-    }
-    cout<<'\n';
-}
-int main(){
-    OJ;
-    FIO;
+Node* take_input(){
     Node*head=NULL;
     int n;
     cin>>n;
@@ -83,8 +73,45 @@ int main(){
         cin>>data;
         insertinhead(head,data);
     }
-    insertintail(head,6);
-    insertinmiddle(head,8,2);;
+    return head;
+}
+void printll(Node* head){
+    Node*temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    cout<<'\n';
+}
+Node* createll(){
+    int n;
+    cin>>n;
+    Node* head=NULL,*tail=NULL;
+    while (n--)
+    {
+        /* code */
+        int x;
+        cin>>x;
+        if(head==NULL){
+            Node* curr=new Node(x);
+            head=curr;
+            tail=curr;
+        }
+        else{
+            Node*curr=new Node(x);
+            tail->next=curr;
+            tail=curr;
+        }
+    }
+    return head;
+}
+int main(){
+    OJ;
+    FIO;
+    // Node*head=take_input();
+    // insertintail(head,6);
+    // insertinmiddle(head,8,2);
+    Node* head=createll();
     printll(head);
     //cout<<length(head);
 }

@@ -30,6 +30,7 @@ int height(node*root){
     int rs=height(root->right);
     return max(ls,rs)+1;
 }
+
 void printkthlevel(node*root,int k){
     if(root==NULL){
         return;
@@ -42,6 +43,7 @@ void printkthlevel(node*root,int k){
         printkthlevel(root->right,k-1);
         return;
 }
+
 void levelorder(node*root){
     int H=height(root);
     for(int i=1;i<=H;i++){
@@ -55,5 +57,4 @@ int main(){
     //cout<<height(root);
     levelorder(root);
 }
-
 //8 10 1 -1 -1 6 9 -1 -1 7 -1 -1 3 -1 14 13 -1 -1 -1

@@ -36,3 +36,22 @@ int intersectPoint(Node* head1, Node* head2)
     //large data
     return l->data;
 }
+Node *getintersect(Node* head1,Node* head2){
+    Node *p1=head1;
+    Node *p2=head2;
+    if(p1==NULL || p2==NULL) return NULL;
+    while(p1!=NULL and p2!=NULL and p1!=p2){
+        p1=p1->next;
+        p2=p2->next;
+        //any time they collide or reach end together without colliding
+        //then return any one of the pointers
+        if(p1==p2) return p1;
+        // If one of them reaches the end earlier then reuse it 
+        // by moving it to the beginning of other list.
+        // Once both of them go through reassigning, 
+        // they will be equidistant from the collision point.
+        if(p1==NULL)p1=headB;
+        if(p2==NULL)p2=headA;
+    }
+    return p1;
+}

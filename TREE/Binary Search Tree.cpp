@@ -119,6 +119,34 @@ void bfs(node* root){
     }
     return;
 }
+node* floor(node* root,int x){
+    node* res=NULL;
+    while(root!=NULL){
+        if(root->data==x)return root;
+        else if(root->data>x){
+            root=root->left;
+        }
+        else{
+            res=root;
+            root=root->right;
+        }
+    }
+    return res;
+}
+node* ciel(node*root,int x){
+    node* res=NULL;
+    while(root!=NULL){
+        if(root->data==x)return root;
+        else if(root->data<x){
+            root=root->right;
+        }
+        else{
+            res=root;
+            root=root->left ;
+        }
+    }
+    return res;
+}
 int main(){
     node*root=build();
     bfs(root);

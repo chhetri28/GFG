@@ -83,9 +83,42 @@ void sort(vector<int>&v){
 	insert(v,last);
 	return ;
 } 
+// Rope cutting
+int maxcuts(int n,int a,int b,int c){
+	if(n==0)return 0;
+	if(n<0)return -1;
+	int res=max(maxcuts(n-a,a,b,c),max(maxcuts(n-b,a,b,c),maxcuts(n-c,a,b,c)));
+	if(res==-1)return -1;
+	return res+1;
+}
+void substring(string s,string curr="",int index=0){
+	if(index==s.size()){
+		cout<<curr<<" ";
+		return;
+	}
+	substring(s,curr,index+1);
+	substring(s,curr+s[index],index+1);
+}
+void generate_brackets(char *out,int n,int idx,int open,int close){
+	if(idx==2*n){
+		out[idx]='\0';
+		cout<<out<<endl;
+		return;
+	}
+	if(open<n){
+		out[idx]='(';
+		generate_brackets(out,n,idx+1,open+1,close);
+	}
+	if(close<open){
+		out[idx]=')';
+		generate_brackets(out,n,idx+1,open,close+1);
+	}
+	return;
+}
 int main(){
-	OJ; int n;cin>>n;
-	// string s;
+	OJ; 
+	//int n;cin>>n;
+	// string s,curr=" ";
 	// cin>>s;
 	//reverserec(s,0);
 	//cout<<isplaindrome(s,0,s.size()-1);
@@ -95,12 +128,16 @@ int main(){
 	// cout<<ladder2(4);
 	// cout<<bike(n);
 	//TOH(n,'A','B','C');
-	vector<int>a(n);
-	for(int i=0;i<n;i++){
-		cin>>a[i];
-	}
-	sort(a);
-	for(auto x:a){
-		cout<<x<<" ";
-	}
+	// vector<int>a(n);
+	// for(int i=0;i<n;i++){
+	// 	cin>>a[i];
+	// }
+	// sort(a);
+	// for(auto x:a){
+	// 	cout<<x<<" ";
+	// }
+	//cout<<maxcuts(n,2,1,5);
+	//substring(s,curr,0);
+	char ans[1001];
+	generate_brackets(ans,2,0,0,0);
 }
